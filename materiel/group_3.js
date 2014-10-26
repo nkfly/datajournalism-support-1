@@ -16,7 +16,7 @@ function historgram(id,data,pie_data,color,type_name){
 		nameset.push(data[i][0]);
 	}
 	//alert(numset.length);
-	var w = 550;
+	var w = 500;
 	var h = 550;
 	var legend_width = w;
 	var svg = d3.select(id)
