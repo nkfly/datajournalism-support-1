@@ -1,5 +1,5 @@
 function historgram(id,data,pie_data,color,type_name){
-	//alert("shit");
+	
 	var numset = [];
 	var nameset = [];
 	var padding = 50;
@@ -16,7 +16,7 @@ function historgram(id,data,pie_data,color,type_name){
 		nameset.push(data[i][0]);
 	}
 	//alert(numset.length);
-	var w = 650;
+	var w = 550;
 	var h = 550;
 	var legend_width = w;
 	var svg = d3.select(id)
@@ -141,12 +141,13 @@ function historgram(id,data,pie_data,color,type_name){
                 .text(nameset[i]);	
                 pie.update(pie_data[i]);
 	}
+	//alert("fuck");
 	return hg;
 	
 }
 function piechart(id,data,his_data,type_list){
-	var w = 400;
-	var h = 400;
+	var w = 340;
+	var h = 340;
 	var outerRadius = w/2;
 	var innerRadius = 0;
 	var r = Math.min(w,h) / 2;
@@ -233,7 +234,7 @@ function piechart(id,data,his_data,type_list){
 	return pc;	
 }
 function legend(id,type_list){
-	var w = 200;
+	var w = 150;
 	var h = 200;
 	var legend_height = 20;
 	var legend_width = 50;

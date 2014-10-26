@@ -161,6 +161,42 @@
   
 
   }
+  	
+  function hist_and_pie(divid){
+	d3.csv("./materiel/his_data.csv",function(error,his_data){
+                                d3.csv("./materiel/pie_data.csv",function(error,pie_data){
+                                        var his_1 = [];
+                                        var his_2 = [];
+                                        var his_3 = [];
+                                        var his_4 = [];
+                                        var type_list = ["研究所以上","大專院校","高中職","高中職以下學歷"];
+                                        var pie_pro_data = [];
+					
+                                        for(var i = 0;i<his_data.length;i++){
+						//alert(pie_data[i].地區);
+						
+                                                his_1.push([his_data[i].地區,parseFloat(his_data[i].研究所以上)]);
+                                                his_2.push([his_data[i].地區,parseFloat(his_data[i].大專院校)]);
+                                                his_3.push([his_data[i].地區,parseFloat(his_data[i].高中職)]);
+                                                his_4.push([his_data[i].地區,parseFloat(his_data[i].高中職以下學歷)]);
+                                                pie_pro_data.push([pie_data[i].地區,parseFloat(pie_data[i].研究所以上),parseFloat(pie_data[i].大專院校),parseFloat(pie_data[i].高中職),parseFloat(pie_data[i].高中職以下學歷)]);
+						
+                                        }
+					
+					//alert("fuck");
+					
+                                        var color = d3.scale.category10();
+                                        his_pro_data = [his_1,his_2,his_3,his_4];
+                                        hg = historgram(divid+" #hist",his_1,pie_pro_data,color(0));
+                                        pie = piechart(divid+" #pie",pie_pro_data[2],his_pro_data,type_list);
+                                        legend(divid+" #legend",type_list);
+					
+                                })
+                        })
+	
+  }
+  
+	
   $(document).ready(function(){
     $("#banner").click(function(){
       if(!$("#block-0").is(":visible")){
@@ -192,8 +228,7 @@
        $("#block-4").show();
       }
     });
-
-
+    hist_and_pie("#block-1");
     $('.selectpicker').selectpicker();
     drawSvg("./materiel/全台鄉鎮市長學歷分布.csv");
 
