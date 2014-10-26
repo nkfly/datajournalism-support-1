@@ -234,7 +234,7 @@ function piechart(id,data,his_data,type_list){
 	return pc;	
 }
 function legend(id,type_list){
-	var w = 190;
+	var w = 200;
 	var h = 200;
 	var legend_height = 20;
 	var legend_width = 50;
