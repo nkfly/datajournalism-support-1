@@ -21,6 +21,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   
   <style>
+    .block-title{
+      font-weight: bold;
+    }
     .container{
       max-width: 1080px;
       margin-left: auto;
@@ -158,6 +161,38 @@
 
   }
   $(document).ready(function(){
+    $("#banner").click(function(){
+      if(!$("#block-0").is(":visible")){
+       $("div.block").hide(); 
+       $("#block-0").show();
+      }
+    });
+    $("#button-1").click(function(){
+      if(!$("#block-1").is(":visible")){
+       $("div.block").hide(); 
+       $("#block-1").show();
+      }
+    });
+    $("#button-2").click(function(){
+      if(!$("#block-2").is(":visible")){
+       $("div.block").hide(); 
+       $("#block-2").show();
+      }
+    });
+    $("#button-3").click(function(){
+      if(!$("#block-3").is(":visible")){
+       $("div.block").hide(); 
+       $("#block-3").show();
+      }
+    });
+    $("#button-4").click(function(){
+      if(!$("#block-4").is(":visible")){
+       $("div.block").hide(); 
+       $("#block-4").show();
+      }
+    });
+
+
     $('.selectpicker').selectpicker();
     drawSvg("./materiel/全台鄉鎮市長學歷分布.csv");
 
@@ -183,17 +218,25 @@
 
 <body>
   <div class="container">
-    <img style="width:100%;"src="./materiel/banner.png">
+    <img id="banner" style="width:100%;cursor:pointer;"src="./materiel/banner.png">
     <div style="margin-left:auto;margin-right:auto;">
       <img id="button-1" class="nav-img" src="./materiel/全台學歷分布一覽.png">
       <img id="button-2" class="nav-img" src="./materiel/近五屆學歷比例變化.png">
       <img id="button-3" class="nav-img" src="./materiel/當選學歷次數大比拚.png">
       <img id="button-4" class="nav-img" src="./materiel/學歷影響當選比例.png">
     </div>
+    <div id="block-0" class="block" >
+      <img src="./materiel/書本icon.png"style="margin-top:20px;margin-left:100px;width:310px;height:380px;display:inline-block;vertical-align:top;" />
+      <div style="position:relative;top:140px;left:30px;display:inline-block;width:400px">
+        <p style="display:inline-block;font-size:20px;">
+          我們希望藉由整理近五屆選舉人的學經歷背景，了解各層級的當選人學歷多分布在研究所、大專院校、高中職、還是以下的學位。
+        </p>
+      </div>
+    </div>
     <div id="block-1" class="block" style="display:none">
     </div>
-    <div id="block-2" class="block" >
-      <h2>近四屆學歷比例變化</h2>
+    <div id="block-2" class="block" style="display:none">
+      <h2 class="block-title">近四屆學歷比例變化</h2>
       <select id="selectpicker" class="selectpicker">
         <option>全台鄉鎮市長學歷分布</option>
         <option>全台直轄市議員學歷分布</option>
@@ -205,12 +248,18 @@
       <svg style="display:inline-block;vertical-align:bottom;"id="stack_bar_chart"></svg>
       <div style="display:inline-block;width:300px">
         <p style="display:inline-block;font-size:20px;">
-        以下圖表以直轄、縣市首長及議員和鄉鎮市長為基礎，呈現近四屆中，各個學歷所占之比例。五張圖可分為兩種趨勢：一是以學士以上學歷為多數者，如：直轄市長、議員以及縣市長；二是以大學及高中職學歷居多者，如：縣市議員及鄉鎮市長。發現在越高的層級，高學歷者比重也越多。
+        左邊圖表以直轄、縣市首長及議員和鄉鎮市長為基礎，呈現近四屆中，各個學歷所占之比例。五張圖可分為兩種趨勢：一是以學士以上學歷為多數者，如：直轄市長、議員以及縣市長；二是以大學及高中職學歷居多者，如：縣市議員及鄉鎮市長。發現在越高的層級，高學歷者比重也越多。
         </p>
       </div>
-      
     </div>
     <div id="block-3" class="block" style="display:none">
+      <h2 style="padding-left:100px;"class="block-title">當選學歷次數大比拼</h2>
+      <img src="./materiel/3.png"style="margin-left:100px;width:436px;height:320px;display:inline-block;vertical-align:bottom;" />
+      <div style="display:inline-block;width:400px;position:relative;left:30px">
+        <p style="display:inline-block;font-size:20px;">
+        本表根據近四屆之直轄、縣市首長及議員和鄉鎮市長做統計，計算在當屆當選者中，何種學歷為最大宗。以此表來看，在縣市首長層級中，以研究所以上學歷者為多數。而在直轄市議員中，呈現碩士以上和學士持平的現象。在縣市議員，多為大學學歷者勝出。 最後，在鄉鎮市長部分，則是大專院校和高中職學歷勝出次數相同。而在本表中，高中職以下的學歷者幾乎占當選人的極少數。
+        </p>
+      </div>
     </div>
     <div id="block-4" class="block" style="display:none">
     </div>
