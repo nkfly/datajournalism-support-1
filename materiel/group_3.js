@@ -74,7 +74,7 @@ function historgram(id,data,pie_data,color,type_name){
                 .append("text")
                 .text(function(d){return d;})
 		.attr("x",0)
-                .attr("y",function(d,i){ return i*((h-2*padding)/numset.length)+padding + (h-2*padding)/(numset.length)-1.5*rect_padding;})
+                .attr("y",function(d,i){ return i*((h-2*padding)/numset.length)+padding + (h-2*padding)/(numset.length)-2.5*rect_padding;})
                 .attr("fill","black")
                 .attr("font-size","15");
 	var color = d3.scale.category10();
