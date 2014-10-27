@@ -39,7 +39,7 @@ function historgram(id,data,pie_data,color,type_name){
                         .data(numset)
                         .enter()
                         .append("rect")
-			.attr("x",padding)
+			.attr("x",padding+10)
                         .attr("y",function(d,i){ return i*((h-2*padding)/numset.length) + padding;})
                         .attr("height",((h-2*padding)/(numset.length) - rect_padding))
                         .attr("width",function(d){return xscale(d);})
@@ -60,7 +60,7 @@ function historgram(id,data,pie_data,color,type_name){
 			.text(function(d){
 				return d;
 			})
-			.attr("x",function(d){return (padding + xscale(d));})
+			.attr("x",function(d){return (padding + xscale(d)+10);})
                         .attr("y",function(d,i){ 
 				return i*((h-2*padding)/numset.length)+padding + (h-2*padding)/(numset.length)-rect_padding;
 				//return h-padding/2;
@@ -126,7 +126,7 @@ function historgram(id,data,pie_data,color,type_name){
 	    num_text.data(numset)
 		.transition()
 		.duration(500)
-		.attr("x",function(d){return (padding + xscale(d));})
+		.attr("x",function(d){return (padding + xscale(d)+10);})
 		.text(function(d){
 			return d;
 		});
