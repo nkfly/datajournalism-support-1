@@ -2,7 +2,7 @@ function historgram(id,data,pie_data,color,type_name){
 	
 	var numset = [];
 	var nameset = [];
-	var padding = 30;
+	var padding = 45;
 	var rect_padding = 3;
 	var ypadding = 80;
 	var ybotpadding = 10;
@@ -17,7 +17,7 @@ function historgram(id,data,pie_data,color,type_name){
 	}
 	//alert(numset.length);
 	var w = 500;
-	var h = 450;
+	var h = 420;
 	var legend_width = w;
 	var svg = d3.select(id)
 			.append("svg")
