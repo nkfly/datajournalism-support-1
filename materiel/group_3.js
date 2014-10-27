@@ -6,7 +6,7 @@ function historgram(id,data,pie_data,color,type_name){
 	var rect_padding = 3;
 	var ypadding = 80;
 	var toppadding = 10;
-	var legend_height = 30;
+	var legend_height = 20;
 	var icon_height = 20;
 	var icon_width = 50;
 	var legend_font_size = 15;
