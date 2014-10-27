@@ -5,7 +5,7 @@ function historgram(id,data,pie_data,color,type_name){
 	var padding = 35;
 	var rect_padding = 3;
 	var ypadding = 80;
-	var ybotpadding = 10;
+	var toppadding = 10;
 	var legend_height = padding;
 	var icon_height = 20;
 	var icon_width = 50;
@@ -40,8 +40,8 @@ function historgram(id,data,pie_data,color,type_name){
                         .enter()
                         .append("rect")
 			.attr("x",padding+10)
-                        .attr("y",function(d,i){ return i*((h-padding)/numset.length);})
-                        .attr("height",((h-padding)/(numset.length) - rect_padding))
+                        .attr("y",function(d,i){ return i*((h-padding)/numset.length) +toppadding;})
+                        .attr("height",((h-padding-toppadding)/(numset.length) - rect_padding))
                         .attr("width",function(d){return xscale(d);})
                         .on("mouseover",function(d,i){
                                 mouseover(d,i);
@@ -62,7 +62,7 @@ function historgram(id,data,pie_data,color,type_name){
 			})
 			.attr("x",function(d){return (padding + xscale(d)+10);})
                         .attr("y",function(d,i){ 
-				return i*((h-padding)/numset.length) + (h-padding)/(numset.length)-rect_padding;
+				return i*((h-padding)/numset.length)+toppadding + (h-padding)/(numset.length)-rect_padding;
 				//return h-padding/2;
 			})
 			.attr("fill","black")
@@ -74,7 +74,7 @@ function historgram(id,data,pie_data,color,type_name){
                 .append("text")
                 .text(function(d){return d;})
 		.attr("x",0)
-                .attr("y",function(d,i){ return i*((h-padding)/numset.length) + (h-padding)/(numset.length)-2.5*rect_padding;})
+                .attr("y",function(d,i){ return i*((h-padding)/numset.length)+toppadding + (h-padding)/(numset.length)-2.5*rect_padding;})
                 .attr("fill","black")
                 .attr("font-size","13");
 	var color = d3.scale.category10();
