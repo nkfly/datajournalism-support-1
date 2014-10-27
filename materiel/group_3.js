@@ -2,7 +2,7 @@ function historgram(id,data,pie_data,color,type_name){
 	
 	var numset = [];
 	var nameset = [];
-	var padding = 50;
+	var padding = 30;
 	var rect_padding = 3;
 	var ypadding = 80;
 	var ybotpadding = 10;
