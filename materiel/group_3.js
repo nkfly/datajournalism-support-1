@@ -6,7 +6,7 @@ function historgram(id,data,pie_data,color,type_name){
 	var rect_padding = 3;
 	var ypadding = 80;
 	var toppadding = 10;
-	var legend_height = padding;
+	var legend_height = 30;
 	var icon_height = 20;
 	var icon_width = 50;
 	var legend_font_size = 15;
@@ -32,7 +32,7 @@ function historgram(id,data,pie_data,color,type_name){
 		.orient("top");
 	svg.append("g")
 		.attr("class","x axis")
-		.attr("transform", "translate(" + (padding+10) + ","+ (h-padding/2) +")")
+		.attr("transform", "translate(" + (padding+10) + ","+ (h-(padding/2) +5) +")")
 		.call(xaxis);
 	
 	var rect = svg.selectAll("rect")
@@ -84,7 +84,7 @@ function historgram(id,data,pie_data,color,type_name){
                         .attr("width", legend_width);
         var legend_icon = legend.append("rect")
 		.attr("x",legend_width - icon_width - 10*legend_font_size)
-		.attr("y",(h-0.4*padding )) //padding/5
+		.attr("y",(h-legend_height)) //padding/5
                 .attr("width", icon_width)
                 .attr("height", icon_height)
                 .style("fill", function(){
@@ -92,7 +92,7 @@ function historgram(id,data,pie_data,color,type_name){
 		});
 	var legend_text = legend.append("text")
 		.attr("x",legend_width - icon_width - 5*legend_font_size)
-                .attr("y",(h-0.4*padding)+legend_font_size) //padding/5 + legend_font_size)
+                .attr("y",(h-legend_height)+legend_font_size) //padding/5 + legend_font_size)
 		.attr("fill","black")
 		.text("研究所以上")
                 .attr("font-size",legend_font_size);
