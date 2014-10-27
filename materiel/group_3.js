@@ -32,7 +32,7 @@ function historgram(id,data,pie_data,color,type_name){
 		.orient("top");
 	svg.append("g")
 		.attr("class","x axis")
-		.attr("transform", "translate(" + padding+10 + ","+ (h-padding/2) +")")
+		.attr("transform", "translate(" + (padding+10) + ","+ (h-padding/2) +")")
 		.call(xaxis);
 	
 	var rect = svg.selectAll("rect")
