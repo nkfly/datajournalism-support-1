@@ -17,9 +17,11 @@
   <link rel="stylesheet" type="text/css" href="./materiel/bootstrap-select.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script src="./materiel/bootstrap-select.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="./materiel/group_3.js"></script>
+  
   
   <style>
     .block-title{
@@ -54,6 +56,34 @@
     .x.axis path {
       display: none;
     }
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
+
+    /* Style northward tooltips differently */
+    .d3-tip.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
   </style>
   <script type="text/javascript">
     function drawSvg(filename){
@@ -68,7 +98,7 @@
         .rangeRound([height, 0]);
 
     var color = d3.scale.ordinal()
-        .range(["#109618", "#FF9900", "#DC3912", "#3366CC"]);
+        .range(["#F08000", "#0084C0", "#DA5682", "#FABE00"]);
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -79,20 +109,31 @@
         .orient("left")
         .tickFormat(d3.format(".2s"));
 
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return "<span style='color:red'>" + ((d.y1 - d.y0).toFixed(2)) + "%</span>";
+      })
+
     var svg = d3.select("#stack_bar_chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    svg.call(tip);
+
     d3.csv(filename, function(error, data) {
       color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Year"; }));
 
+      color.domain().reverse();
       data.forEach(function(d) {
         var y0 = 0;
         d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
         d.total = d.ages[d.ages.length - 1].y1;
       });
+      color.domain().reverse();
 
       data.sort(function(a, b) { return parseInt(a.Year) - parseInt(b.Year); });
 
@@ -134,11 +175,14 @@
         .enter().append("rect")
           .attr("width", 54)
           .attr("y", function(d) { return y(d.y1); })
+          .attr("transform", "translate(30,0 )")
           .attr("height", function(d) { return y(d.y0) - y(d.y1); })
-          .style("fill", function(d) { return color(d.name); });
+          .style("fill", function(d) { return color(d.name); })
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide);
 
       var legend = svg.selectAll(".legend")
-          .data(color.domain().slice().reverse())
+          .data(color.domain().slice())
         .enter().append("g")
           .attr("class", "legend")
           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -257,7 +301,7 @@
     <img id="banner" style="width:100%;cursor:pointer;"src="./materiel/banner.png">
     <div style="margin-left:auto;margin-right:auto;">
       <img id="button-1" class="nav-img" src="./materiel/全台學歷分布一覽.png">
-      <img id="button-2" class="nav-img" src="./materiel/近五屆學歷比例變化.png">
+      <img id="button-2" class="nav-img" src="./materiel/近四屆學歷比例變化.png">
       <img id="button-3" class="nav-img" src="./materiel/當選學歷次數大比拚.png">
       <img id="button-4" class="nav-img" src="./materiel/學歷影響當選比例.png">
     </div>
@@ -305,7 +349,17 @@
         </p>
       </div>
     </div>
-    <div id="block-4" class="block" style="display:none">
+    <div id="block-4" class="block" style="display:none;padding-top:20px">
+      <img src="./materiel/直轄市長.png"style="display:inline-block;width:200px;height:257px" />
+      <img src="./materiel/直轄市議員.png"style="display:inline-block;width:200px;height:257px" />
+      <img src="./materiel/縣市長.png"style="display:inline-block;width:200px;height:257px" />
+      <img src="./materiel/縣市議員.png"style="display:inline-block;width:200px;height:257px" />
+      <img src="./materiel/鄉鎮市長.png"style="display:inline-block;width:200px;height:257px" />
+      <div >
+        <p style="font-size:20px;">
+        我們選取近四屆直轄市長、直轄市議員、縣市長、縣市議員及鄉鎮市長候選人作為研究對象,比較上述行政層級候選人與當選人的學歷分布,藉以檢視相異行政層級間,學歷背景對於選舉結果的影響。結果顯示,直轄市長層級中,近四屆當選人最高學歷皆為研究所(以上);近四屆直轄市議員當選人最高學歷以研究所(以上)及大專院校為多,分別是169及170名;另一方面,近四屆縣市長及縣市議員皆以研究所(以上)的當選比例最高;近四屆鄉鎮市長參選人學歷分布較其他層級平均,相異學歷背景的當選人與落選人比例約各佔五成。
+        </p>
+      </div>
     </div>
   </div>
   
