@@ -84,7 +84,7 @@ function historgram(id,data,pie_data,color,type_name){
                         .attr("width", legend_width);
         var legend_icon = legend.append("rect")
 		.attr("x",legend_width - icon_width - 10*legend_font_size)
-		.attr("y",(h-0.5*padding )) //padding/5
+		.attr("y",(h-0.2*padding )) //padding/5
                 .attr("width", icon_width)
                 .attr("height", icon_height)
                 .style("fill", function(){
@@ -92,7 +92,7 @@ function historgram(id,data,pie_data,color,type_name){
 		});
 	var legend_text = legend.append("text")
 		.attr("x",legend_width - icon_width - 5*legend_font_size)
-                .attr("y",(h-0.5*padding)) //padding/5 + legend_font_size)
+                .attr("y",(h-0.2*padding)+legend_font_size) //padding/5 + legend_font_size)
 		.attr("fill","black")
 		.text("研究所以上")
                 .attr("font-size",legend_font_size);
