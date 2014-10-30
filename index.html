@@ -49,7 +49,6 @@
 
     body{
       font-family:Microsoft JhengHei,serif,sans-serif,cursive,fantasy,monospace;
-      background-color: rgb(252,224,191);
     }
     .axis path,
     .axis line {
@@ -239,14 +238,19 @@
                                                 pie_pro_data.push([pie_data[i].地區,parseFloat(pie_data[i].研究所以上),parseFloat(pie_data[i].大專院校),parseFloat(pie_data[i].高中職),parseFloat(pie_data[i].高中職以下學歷)]);
 						
                                         }
-					
-					
-					
-                                        var color = d3.scale.category10();
+					pie_pro_data.push([pie_data[his_data.length].地區,parseFloat(pie_data[his_data.length].研究所以上),parseFloat(pie_data[his_data.length].大專院校),parseFloat(pie_data[his_data.length].高中職),parseFloat(pie_data[his_data.length].高中職以下學歷)]);
+					var color = d3.scale.ordinal()
+        					.range(["#4FC5C7", "#9FE0F6", "#F3E59A", "#F29C9C"]);
                                         his_pro_data = [his_1,his_2,his_3,his_4];
                                         hg = historgram(divid+" #hist",his_1,pie_pro_data,color(0));
-                                        pie = piechart(divid+" #pie",pie_pro_data[2],his_pro_data,type_list);
+                                        pie = piechart(divid+" #pie",pie_pro_data[his_data.length],his_pro_data,type_list);
                                         legend(divid+" #legend",type_list);
+					d3.select("#tw_distribution")
+						.on("click",function(){
+							d3.select("#dis_name")
+                                                        .text("全台");
+							pie.update(pie_pro_data[his_data.length]);
+					});
 					
                                 })
                         })
@@ -293,8 +297,10 @@
         <div id ="hist" class ="diagram" style ="display:inline-block;">
         </div>
         <div id ="pie" class ="diagram" style="display:inline-block;font-size:20px;position:relative;top:-20px;">
-            <p id="dis_name" style="font-size:15px;height:15px;"></p>
+            <p id="dis_name" style="font-size:15px;height:15px;">全台</p>
+	    <button id="tw_distribution" style="position:absolute;left:200px;top:-10px;background-color:#9FE0F6;">全台分佈</button>
             <div style="font-size:15px;height:15px;">學位分佈</div>
+ 	    
         </div>
         <div id ="legend" style="display:inline-block;">
         </div>

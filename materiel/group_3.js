@@ -1,4 +1,4 @@
-function historgram(id,data,pie_data,color,type_name){
+function historgram(id,data,pie_data,input_color,type_name){
 	
 	var numset = [];
 	var nameset = [];
@@ -44,14 +44,18 @@ function historgram(id,data,pie_data,color,type_name){
                         .attr("height",((h-padding-toppadding)/(numset.length) - rect_padding))
                         .attr("width",function(d){return xscale(d);})
                         .on("mouseover",function(d,i){
+				d3.select(this)
+					.attr("fill","orange");
                                 mouseover(d,i);
                         })
                         .on("mouseout",function(){
+				d3.select(this)
+					.attr("fill",input_color);
                                 d3.select("#tooltip1")
                                         .style("display","None");
                         })
                         .attr("fill",function(d,i){
-                                return color;
+                                return input_color;
                         });
 	var num_text = svg.selectAll("text.values")
 			.data(numset)
@@ -77,7 +81,9 @@ function historgram(id,data,pie_data,color,type_name){
                 .attr("y",function(d,i){ return i*((h-padding)/numset.length)+toppadding + (h-padding)/(numset.length)-2.5*rect_padding;})
                 .attr("fill","black")
                 .attr("font-size","13");
-	var color = d3.scale.category10();
+	var color = d3.scale.ordinal()
+        	.range(["#4FC5C7", "#9FE0F6", "#F3E59A", "#F29C9C"]);
+
 	var legend = svg.append("g")
                         .attr("class", "legend")
                         .attr("height", legend_height)
@@ -97,7 +103,7 @@ function historgram(id,data,pie_data,color,type_name){
 		.text("研究所以上")
                 .attr("font-size",legend_font_size);
 	var hg = {};
-	hg.update = function(ndata,color,typename){
+	hg.update = function(ndata,input_color,typename){
 	    var nameset = [];
 	    var numset = [];
 	    for(var i=0;i<ndata.length;i++){
@@ -117,7 +123,19 @@ function historgram(id,data,pie_data,color,type_name){
             svg.selectAll("rect").data(numset).transition().duration(500)
                 //.attr("y", function(d,i){ return i*((h-padding)/numset.length)+padding;})
                 .attr("width",function(d){return xscale(d);})
-                .attr("fill", color);
+                .attr("fill", input_color);
+	    svg.selectAll("rect").data(numset)
+		.on("mouseover",function(d,i){
+                                d3.select(this)
+                                        .attr("fill","orange");
+                                mouseover(d,i);
+                        })
+                .on("mouseout",function(){
+                        d3.select(this)
+                          .attr("fill",input_color);
+                        d3.select("#tooltip1")
+                          .style("display","None");
+                 });
 	    d3.select("#type").text(function(d){return typename + ":"});
 	    svg.select(".x.axis")
 		.transition()
@@ -133,7 +151,7 @@ function historgram(id,data,pie_data,color,type_name){
 	    legend_icon
 		.transition()
 		.duration(500)
-		.style("fill",color);
+		.style("fill",input_color);
 	    legend_text.text(typename);
         }
 	function mouseover(d,i){
@@ -156,7 +174,9 @@ function piechart(id,data,his_data,type_list){
 	var font_size = 15;
         nameset.push(data[0]);
         numset = [data[1],data[2],data[3],data[4]];
-	var color = d3.scale.category10();
+	var color = d3.scale.ordinal()
+    	    .range(["#4FC5C7", "#9FE0F6", "#F3E59A", "#F29C9C"]);
+
 	var pie = d3.layout.pie()
                    .sort(null);
 	var arc = d3.svg.arc()
@@ -241,7 +261,9 @@ function legend(id,type_list){
 	var legend_padding = 10;
 	var padding = 50;
 	var text_padding = 10;
-	var color = d3.scale.category10();
+	var color = d3.scale.ordinal()
+	        .range(["#4FC5C7", "#9FE0F6", "#F3E59A", "#F29C9C"]);
+
 	var font_size = 13;
 	var svg = d3.select(id)
 			.append("svg")
