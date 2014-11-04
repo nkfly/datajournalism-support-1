@@ -6,7 +6,7 @@ function historgram(id,data,pie_data,input_color,type_name){
 	var rect_padding = 3;
 	var ypadding = 80;
 	var toppadding = 10;
-	var legend_height = 20;
+	var legend_height = 40;
 	var icon_height = 20;
 	var icon_width = 50;
 	var legend_font_size = 15;
@@ -90,7 +90,7 @@ function historgram(id,data,pie_data,input_color,type_name){
                         .attr("width", legend_width);
         var legend_icon = legend.append("rect")
 		.attr("x",legend_width - icon_width - 10*legend_font_size)
-		.attr("y",(h-legend_height)) //padding/5
+		.attr("y",(h-legend_height+1.6*legend_font_size)) //padding/5
                 .attr("width", icon_width)
                 .attr("height", icon_height)
                 .style("fill", function(){
@@ -98,7 +98,7 @@ function historgram(id,data,pie_data,input_color,type_name){
 		});
 	var legend_text = legend.append("text")
 		.attr("x",legend_width - icon_width - 5*legend_font_size)
-                .attr("y",(h-legend_height)+legend_font_size) //padding/5 + legend_font_size)
+                .attr("y",(h-legend_height)+2.6*legend_font_size) //padding/5 + legend_font_size)
 		.attr("fill","black")
 		.text("研究所以上")
                 .attr("font-size",legend_font_size);
@@ -260,7 +260,7 @@ function legend(id,type_list){
 	var legend_width = 50;
 	var legend_padding = 10;
 	var padding = 50;
-	var text_padding = 10;
+	var text_padding = 7;
 	var color = d3.scale.ordinal()
 	        .range(["#4FC5C7", "#9FE0F6", "#F3E59A", "#F29C9C"]);
 
@@ -299,8 +299,8 @@ function legend(id,type_list){
   		.text(function(d){
 			return d;
 		})
-		.attr("font-family","sans-serif")
-      		.attr("font-size",font_size)
-      		.attr("stroke","black");
+		//.attr("font-family","sans-serif")
+      		.attr("font-size",font_size);
+      		//.attr("stroke","black");
 	
 }
