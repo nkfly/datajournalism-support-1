@@ -29,6 +29,22 @@
 
 
   }
+    .article_content{
+	display:inline-block;
+	font-size:20px;
+	text-align:left;
+	padding:10px;
+	}
+    .image_ps{
+	padding:2px;
+	font-size:14px;
+	color:#a9a9a9;
+	text-align:right;
+	}
+    .ps{
+	font-size:14px;
+	color:#a9a9a9;
+	}
     .title_text{
 	font-size:40px;
 	padding:10px;
@@ -291,17 +307,19 @@
 
 <body>
   <div class="container">
-    <img id="banner" style="display:inline-block;position:relative;width:88px;cursor:pointer;left:200px;"src="./materiel/未命名-1.png">
-    <h1 style="margin-left:30px;font-weight:bold;position:relative;left:200px;font-size:58px;display:inline-block">學歷高低成當選關鍵</h1>
-    <p style="text-align:left;font-size:28px">我們希望藉由整理近五屆選舉人的學經歷背景，了解各層級的當選人學歷，多分布在研究所、大專院校、高中職還是以下的學位。
+    <img id="banner" style="display:inline-block;position:relative;width:88px;cursor:pointer;left:50px;"src="./materiel/未命名-1.png">
+    <h1 style="margin-left:30px;font-weight:bold;position:relative;left:50px;font-size:45px;display:inline-block;">選民就是相信高學歷   學歷高，勝選機會就高</h1>
+    <h2 style= "text-align:right;font-size:22px;padding:20px;">李宗岳、譚竹雯、廖昱涵／報導 &nbsp&nbsp&nbsp  洪立遠、吳旻誠／網頁架構</h2>
+    <p class="article_content">候選人都想在選舉中獲勝，本報導分析參選人資料，發現選民就是相信高學歷，導致高學歷當選的比例也最高。在台灣五項地方選舉中，行政層級愈高的選舉，當選人學歷多為大專院校、研究所（以上）。可見學歷高低的確影響選民的投票意向。
     </p>
-      <div class= "title_text">
-	<p>全台學歷分佈一覽</p>
-	</div>
-      <!-- 
-	<div style="text-align:center;"><img id="button-1" class="nav-img" src="./materiel/全台學歷分布一覽.png"></div>
-	-->
-      <div id="block-1" class="block" >
+      <div id="block-1" class="block" style="padding-bottom:20px;">
+	<div class= "title_text">
+        <p>全台學歷分佈一覽</p>
+        </div>
+        <p class="article_content">
+                圖一呈現全台各縣市當選人學歷分布，結果顯示，大專院校（含以上）學歷佔52%，高中職及其以下佔48%。當選人最高學歷為研究所以上者，前三
+名依序為台北市、高雄市及新北市；台北市學歷尤其講究，大專院校（含以上）佔近四屆當選人比例93%，甚至沒有高中職以下學歷當選人。
+        </p>
         <div id ="hist" class ="diagram" style ="display:inline-block;">
         </div>
         <div id ="pie" class ="diagram" style="display:inline-block;font-size:20px;position:relative;top:-20px;">
@@ -312,6 +330,15 @@
         </div>
         <div id ="legend" style="display:inline-block;">
         </div>
+	<p class="image_ps">
+		圖 / 李宗岳 譚竹雯 廖昱涵
+	</p>
+	<p class="article_content">
+		調查時間為近四屆選舉結果，選舉項目包括：直轄市長、直轄市議員、縣市長、縣市議員及鄉鎮市長。點選「全台分布」可以看到各縣市當選人學歷分布情形；點選長條圖時，右方原餅圖為該縣市學歷分布；點選圓餅圖，左方長條圖則顯示該學歷在各縣市的當選人數加總。
+	</p>
+	<p class="ps">
+		註：2010年，中華民國地方縣市升格為直轄市，出現更名與合併情形。台北縣改名為新北市，台中縣市資料合併至臺中市；台南縣市資料合併至台南市；高雄縣市資料合併至高雄市。
+	</p>
     </div>
 	<div class= "title_text">
         <p>近四屆學歷比例變化</p>
@@ -319,11 +346,14 @@
 	<!--
       <div style="text-align:center;"><img id="button-2" class="nav-img" src="./materiel/近四屆學歷比例變化.png"></div>
 	-->
-        <p style="display:inline-block;font-size:20px;">
+        <p class="article_content">
         左邊圖表以直轄、縣市首長及議員和鄉鎮市長為基礎，呈現近四屆中，各個學歷所占之比例。五張圖可分為兩種趨勢：一是以學士以上學歷為多數者，如：直轄市長、議員以及縣市長；二是以大學及高中職學歷居多者，如：縣市議員及鄉鎮市長。發現在越高的層級，高學歷者比重也越多。
         </p>
       
-      <div id="block-2" class="block">
+      <div id="block-2" class="block" style="padding-bottom:20px;">
+	<p class="article_content">
+		圖表呈現兩種趨勢：一是以大專院校及研究所以上學歷為多數者，如：直轄市長（百分之百）、直轄市議員及縣市長（各佔八成左右）當選人；二是以大專院校及高中職學歷居多者，如：縣市議員及鄉鎮市長（各佔八成左右）。層級愈高的選舉，高學歷當選人的比例也愈高。
+	</p>
       <div style="float:left;display:inline-block;text-align:center">
         <h2 style="margin:0px;">直轄市長</h2>
         <svg class="svg-liyuan" id="svg1"></svg>
@@ -345,19 +375,26 @@
         <svg class="svg-liyuan" id="svg5"></svg>
       </div>        
       
-    </div>
+	<p class="image_ps">
+                圖 / 李宗岳 譚竹雯 廖昱涵
+        </p>
+   </div>
 	<div class= "title_text">
         <p>當選學歷次數大比拚</p>
         </div>
+	<p class="article_content">
+        分析統計當選者學歷發現，層級較高之直轄市長、直轄市議員、縣市長中，都以研究所以上學歷的當選者占多數。而愈往基層選舉，才出現低學歷也可能勝
+出的現象。
+        </p>
+
 	<!--
       <div style="text-align:center;"><img id="button-3" class="nav-img" src="./materiel/當選學歷次數大比拚.png"></div>
 	-->
-    <div id="block-3" class="block" style="text-align:center">
+    <div id="block-3" class="block" style="text-align:center;padding-bottom:20px;">
       <img src="./materiel/大比拚圖表_改.png"style="width:600px;height:400px;" />
-        <p style="display:inline-block;font-size:20px;text-align:left">
-        本表根據近四屆之直轄、縣市首長及議員和鄉鎮市長做統計，計算在當屆當選者中，何種學歷為最大宗。以此表來看，在縣市首長層級中，以研究所以上學歷者為多數。而在直轄市議員中，呈現碩士以上和學士持平的現象。在縣市議員，多為大學學歷者勝出。 最後，在鄉鎮市長部分，則是大專院校和高中職學歷勝出次數相同。而在本表中，高中職以下的學歷者幾乎占當選人的極少數。
+      <p class="image_ps">
+                圖 / 李宗岳 譚竹雯 廖昱涵
         </p>
-      
     </div>
    <div class= "title_text">
         <p>學歷影響當選比例</p>
@@ -366,6 +403,10 @@
     <div style="text-align:center"><img id="button-4" class="nav-img" src="./materiel/學歷影響當選比例.png"></div>
    -->
     <div id="block-4" class="block" style="padding-top:20px">
+	 <p class="article_content">
+                愈高教育程度者，在任何層級的當選比例都是最高。研究所以上學歷當選比例居冠，直轄市長選舉更是明顯。次高者為大專院校和高中職學歷，幾
+乎平分秋色。高中職以下學歷者則最低。
+        </p>
       <select id="selectpicker" class="selectpicker" style="float:left">
         <option value="graduate">研究所以上</option>
         <option value="undergrad">大專院校</option>
@@ -378,8 +419,8 @@
       <img id="highschool" src="./materiel/高中五個層級.png"style="width:100%;display:none"/>
       <img id="underhigh" src="./materiel/其他五層級比例.png"style="width:100%;display:none"/>
       </div>
-        <p style="font-size:20px;text-align:left;clear:both;">
-        我們選取近四屆直轄市長、直轄市議員、縣市長、縣市議員及鄉鎮市長候選人作為研究對象，比較上述行政層級候選人與當選人的學歷分布，藉以檢視相異行政層級間，學歷背景對於選舉結果的影響。結果顯示，直轄市長層級中，近四屆當選人最高學歷皆為研究所（以上）；近四屆直轄市議員當選人最高學歷以研究所（以上）及大專院校為多，分別是169及170名；另一方面，近四屆縣市長及縣市議員皆以研究所（以上）的當選比例最高；近四屆鄉鎮市長參選人學歷分布較其他層級平均，相異學歷背景的當選人與落選人比例約各佔五成。
+	<p class="image_ps">
+                圖 / 李宗岳 譚竹雯 廖昱涵
         </p>
     </div>
   </div>
